@@ -105,10 +105,8 @@
   </text>
 
   <!-- Підзаголовок -->
-  <text x="50%" y="68%" dominant-baseline="middle" text-anchor="middle" 
-        font-family="'Press Start 2P', 'Courier New', monospace, sans-serif" 
-        font-size="14" fill="#FF007F" opacity="0.9" letter-spacing="2">
-    WEB &amp; DESKTOP DEVELOPER
+  <text x="50%" y="68%" dominant-baseline="middle" text-anchor="middle" font-family="&#39;Press Start 2P&#39;, &#39;Courier New&#39;, monospace, sans-serif" font-size="14" fill="#FF007F" opacity="0.9" letter-spacing="2">
+    WEB & DESKTOP DEVELOPER
   </text>
 
   <!-- Рамка рахунку аркади (SCORE / LEVEL) -->
