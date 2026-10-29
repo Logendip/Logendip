@@ -1,115 +1,159 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 220" width="720" height="220">
   <defs>
-    <!-- Неонове світіння для блоків та тексту -->
+    <!-- Неонове світіння -->
     <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
       <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#00E0FF" flood-opacity="0.9" />
       <feDropShadow dx="0" dy="0" stdDeviation="10" flood-color="#FF00E6" flood-opacity="0.6" />
     </filter>
 
-    <!-- Стиль сітки Тетрису -->
+    <!-- Фонна сітка аркади -->
     <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
       <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#1F1F3A" stroke-width="1" />
     </pattern>
 
     <style>
-      /* Анімація падіння блоків */
-      @keyframes fall1 {
-        0% { transform: translateY(-60px); opacity: 0; }
-        20% { opacity: 1; }
-        80% { transform: translateY(120px); opacity: 1; }
-        100% { transform: translateY(120px); opacity: 1; }
+      /* Анімація появи імені з падаючих блоків */
+      @keyframes assemble {
+        0% { transform: translateY(-120px); opacity: 0; }
+        60% { transform: translateY(10px); opacity: 1; }
+        80% { transform: translateY(-5px); opacity: 1; }
+        100% { transform: translateY(0px); opacity: 1; }
       }
-      @keyframes fall2 {
-        0% { transform: translateY(-80px) rotate(0deg); opacity: 0; }
-        30% { opacity: 1; }
-        85% { transform: translateY(100px) rotate(90deg); opacity: 1; }
-        100% { transform: translateY(100px) rotate(90deg); opacity: 1; }
-      }
-      @keyframes fall3 {
-        0% { transform: translateY(-100px); opacity: 0; }
-        40% { opacity: 1; }
-        90% { transform: translateY(80px); opacity: 1; }
-        100% { transform: translateY(80px); opacity: 1; }
-      }
-      @keyframes lineFlash {
-        0%, 80% { opacity: 0.3; }
-        90% { opacity: 1; filter: drop-shadow(0 0 8px #00E0FF); }
-        100% { opacity: 0.3; }
+      @keyframes pulseGlow {
+        0%, 100% { filter: drop-shadow(0 0 4px #00E0FF); }
+        50% { filter: drop-shadow(0 0 12px #FF007F); }
       }
 
-      .piece1 { animation: fall1 4s ease-in-out infinite; }
-      .piece2 { animation: fall2 5s ease-in-out 1s infinite; }
-      .piece3 { animation: fall3 4.5s ease-in-out 0.5s infinite; }
-      .filled-line { animation: lineFlash 2s infinite alternate; }
+      .tetris-letter { animation: assemble 2.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+      .glow-border { animation: pulseGlow 4s infinite alternate; }
     </style>
   </defs>
 
   <!-- Темний неоновий фон -->
-  <rect width="100%" height="100%" fill="#0A0A16" rx="12" ry="12" stroke="#1F1F3A" stroke-width="2" />
+  <rect width="100%" height="100%" fill="#0A0A16" rx="12" ry="12" stroke="#1F1F3A" stroke-width="2" class="glow-border" />
   
   <!-- Сітка Тетрису -->
   <rect width="100%" height="100%" fill="url(#grid)" rx="12" ry="12" opacity="0.4" />
 
-  <!-- НИЖНІ НАБРАНІ ЛІНІЇ (Стакан тетрису) -->
-  <g fill-opacity="0.85" stroke="#0A0A16" stroke-width="1.5">
-    <!-- Заповнений нижній рядок -->
-    <rect x="40" y="180" width="18" height="18" fill="#FF007F" rx="3" />
-    <rect x="60" y="180" width="18" height="18" fill="#FF007F" rx="3" />
-    <rect x="80" y="180" width="18" height="18" fill="#00E0FF" rx="3" />
-    <rect x="100" y="180" width="18" height="18" fill="#00E0FF" rx="3" />
-    <rect x="120" y="180" width="18" height="18" fill="#9D00FF" rx="3" />
-    <rect x="140" y="180" width="18" height="18" fill="#9D00FF" rx="3" />
+  <!-- ІМ'Я "LOGENDIP", СКЛАДЕНЕ З БЛОКІВ ТЕТРИСУ (Піксель-арт у центрі) -->
+  <!-- Кожен блок має розмір 10x10 пікселів, сформований у букви -->
+  <g class="tetris-letter" stroke="#0A0A16" stroke-width="1">
     
-    <rect x="560" y="180" width="18" height="18" fill="#00FF66" rx="3" />
-    <rect x="580" y="180" width="18" height="18" fill="#00FF66" rx="3" />
-    <rect x="600" y="180" width="18" height="18" fill="#FFDD00" rx="3" />
-    <rect x="620" y="180" width="18" height="18" fill="#FFDD00" rx="3" />
-    <rect x="640" y="180" width="18" height="18" fill="#FF007F" rx="3" />
+    <!-- === ЛІТЕРА L (Блакитна) === -->
+    <g fill="#00E0FF">
+      <rect x="80" y="80" width="10" height="10" rx="2" />
+      <rect x="80" y="92" width="10" height="10" rx="2" />
+      <rect x="80" y="104" width="10" height="10" rx="2" />
+      <rect x="80" y="116" width="10" height="10" rx="2" />
+      <rect x="92" y="116" width="10" height="10" rx="2" />
+      <rect x="104" y="116" width="10" height="10" rx="2" />
+    </g>
 
-    <!-- Другий рядок -->
-    <rect x="40" y="160" width="18" height="18" fill="#00E0FF" rx="3" />
-    <rect x="60" y="160" width="18" height="18" fill="#9D00FF" rx="3" />
-    <rect x="620" y="160" width="18" height="18" fill="#00FF66" rx="3" />
-    <rect x="640" y="160" width="18" height="18" fill="#FF007F" rx="3" />
+    <!-- === ЛІТЕРА O (Рожева) === -->
+    <g fill="#FF007F">
+      <rect x="124" y="80" width="10" height="10" rx="2" />
+      <rect x="136" y="80" width="10" height="10" rx="2" />
+      <rect x="148" y="80" width="10" height="10" rx="2" />
+      <rect x="124" y="92" width="10" height="10" rx="2" />
+      <rect x="148" y="92" width="10" height="10" rx="2" />
+      <rect x="124" y="104" width="10" height="10" rx="2" />
+      <rect x="148" y="104" width="10" height="10" rx="2" />
+      <rect x="124" y="116" width="10" height="10" rx="2" />
+      <rect x="136" y="116" width="10" height="10" rx="2" />
+      <rect x="148" y="116" width="10" height="10" rx="2" />
+    </g>
+
+    <!-- === ЛІТЕРА G (Жовта) === -->
+    <g fill="#FFDD00">
+      <rect x="168" y="80" width="10" height="10" rx="2" />
+      <rect x="180" y="80" width="10" height="10" rx="2" />
+      <rect x="192" y="80" width="10" height="10" rx="2" />
+      <rect x="168" y="92" width="10" height="10" rx="2" />
+      <rect x="168" y="104" width="10" height="10" rx="2" />
+      <rect x="180" y="104" width="10" height="10" rx="2" />
+      <rect x="192" y="104" width="10" height="10" rx="2" />
+      <rect x="168" y="116" width="10" height="10" rx="2" />
+      <rect x="180" y="116" width="10" height="10" rx="2" />
+      <rect x="192" y="116" width="10" height="10" rx="2" />
+      <rect x="192" y="92" width="10" height="10" rx="2" />
+    </g>
+
+    <!-- === ЛІТЕРА Е (Фіолетова / Неонова) === -->
+    <g fill="#9D00FF">
+      <rect x="212" y="80" width="10" height="10" rx="2" />
+      <rect x="224" y="80" width="10" height="10" rx="2" />
+      <rect x="236" y="80" width="10" height="10" rx="2" />
+      <rect x="212" y="92" width="10" height="10" rx="2" />
+      <rect x="212" y="104" width="10" height="10" rx="2" />
+      <rect x="224" y="104" width="10" height="10" rx="2" />
+      <rect x="212" y="116" width="10" height="10" rx="2" />
+      <rect x="224" y="116" width="10" height="10" rx="2" />
+      <rect x="236" y="116" width="10" height="10" rx="2" />
+    </g>
+
+    <!-- === ЛІТЕРА N (Зелена) === -->
+    <g fill="#00FF66">
+      <rect x="256" y="80" width="10" height="10" rx="2" />
+      <rect x="280" y="80" width="10" height="10" rx="2" />
+      <rect x="256" y="92" width="10" height="10" rx="2" />
+      <rect x="268" y="92" width="10" height="10" rx="2" />
+      <rect x="280" y="92" width="10" height="10" rx="2" />
+      <rect x="256" y="104" width="10" height="10" rx="2" />
+      <rect x="280" y="104" width="10" height="10" rx="2" />
+      <rect x="256" y="116" width="10" height="10" rx="2" />
+      <rect x="280" y="116" width="10" height="10" rx="2" />
+    </g>
+
+    <!-- === ЛІТЕРА D (Блакитна) === -->
+    <g fill="#00E0FF">
+      <rect x="300" y="80" width="10" height="10" rx="2" />
+      <rect x="312" y="80" width="10" height="10" rx="2" />
+      <rect x="300" y="92" width="10" height="10" rx="2" />
+      <rect x="324" y="92" width="10" height="10" rx="2" />
+      <rect x="300" y="104" width="10" height="10" rx="2" />
+      <rect x="324" y="104" width="10" height="10" rx="2" />
+      <rect x="300" y="116" width="10" height="10" rx="2" />
+      <rect x="312" y="116" width="10" height="10" rx="2" />
+    </g>
+
+    <!-- === ЛІТЕРА I (Рожева) === -->
+    <g fill="#FF007F">
+      <rect x="344" y="80" width="10" height="10" rx="2" />
+      <rect x="344" y="92" width="10" height="10" rx="2" />
+      <rect x="344" y="104" width="10" height="10" rx="2" />
+      <rect x="344" y="116" width="10" height="10" rx="2" />
+    </g>
+
+    <!-- === ЛІТЕРА P (Жовта) === -->
+    <g fill="#FFDD00">
+      <rect x="364" y="80" width="10" height="10" rx="2" />
+      <rect x="376" y="80" width="10" height="10" rx="2" />
+      <rect x="364" y="92" width="10" height="10" rx="2" />
+      <rect x="388" y="92" width="10" height="10" rx="2" />
+      <rect x="364" y="104" width="10" height="10" rx="2" />
+      <rect x="376" y="104" width="10" height="10" rx="2" />
+      <rect x="364" y="116" width="10" height="10" rx="2" />
+    </g>
+
   </g>
 
-  <!-- ПАДАЮЧІ ФІГУРИ (АНІМОВАНІ) -->
-  <!-- 1. Т-подібна фігура (Рожева) -->
-  <g class="piece1" fill="#FF007F" stroke="#0A0A16" stroke-width="1.5">
-    <rect x="180" y="20" width="18" height="18" rx="3" />
-    <rect x="200" y="20" width="18" height="18" rx="3" />
-    <rect x="220" y="20" width="18" height="18" rx="3" />
-    <rect x="200" y="40" width="18" height="18" rx="3" />
+  <!-- РОЗКИДАНІ НЕАКТИВНІ БЛОКИ НА ФОНІ (для антуражу заповненого стакану) -->
+  <g fill-opacity="0.35" stroke="#0A0A16" stroke-width="1">
+    <rect x="420" y="190" width="12" height="12" fill="#00E0FF" rx="2" />
+    <rect x="432" y="190" width="12" height="12" fill="#00E0FF" rx="2" />
+    <rect x="444" y="190" width="12" height="12" fill="#FF007F" rx="2" />
+    <rect x="520" y="190" width="12" height="12" fill="#FFDD00" rx="2" />
+    <rect x="532" y="190" width="12" height="12" fill="#00FF66" rx="2" />
+    <rect x="40" y="190" width="12" height="12" fill="#9D00FF" rx="2" />
+    <rect x="52" y="190" width="12" height="12" fill="#9D00FF" rx="2" />
   </g>
 
-  <!-- 2. Г-подібна фігура (Блакитна) -->
-  <g class="piece2" fill="#00E0FF" stroke="#0A0A16" stroke-width="1.5">
-    <rect x="500" y="10" width="18" height="18" rx="3" />
-    <rect x="500" y="30" width="18" height="18" rx="3" />
-    <rect x="500" y="50" width="18" height="18" rx="3" />
-    <rect x="520" y="50" width="18" height="18" rx="3" />
-  </g>
-
-  <!-- 3. Квадрат O-фігура (Жовта) -->
-  <g class="piece3" fill="#FFDD00" stroke="#0A0A16" stroke-width="1.5">
-    <rect x="340" y="0" width="18" height="18" rx="3" />
-    <rect x="360" y="0" width="18" height="18" rx="3" />
-    <rect x="340" y="20" width="18" height="18" rx="3" />
-    <rect x="360" y="20" width="18" height="18" rx="3" />
-  </g>
-
-  <!-- ГОЛОВНИЙ ТЕКСТ У ЦЕНТРІ (Аркадний стиль) -->
-  <!-- Текст LOGENDIP -->
-  <text x="50%" y="42%" dominant-baseline="middle" text-anchor="middle" font-family="&#39;Press Start 2P&#39;, &#39;Courier New&#39;, monospace, sans-serif" font-size="38" font-weight="900" fill="#00E0FF" filter="url(#neonGlow)" letter-spacing="4">
-    LOGENDIP
+  <!-- Підзаголовок знизу -->
+  <text x="50%" y="168%" dominant-baseline="middle" text-anchor="middle" font-family="&#39;Press Start 2P&#39;, &#39;Courier New&#39;, monospace, sans-serif" font-size="12" fill="#00E0FF" opacity="0.8" letter-spacing="1">
+    WEB & DESKTOP DEVELOPER
   </text>
 
-  <!-- Підзаголовок -->
-  <text x="50%" y="68%" dominant-baseline="middle" text-anchor="middle" font-family="&#39;Press Start 2P&#39;, &#39;Courier New&#39;, monospace, sans-serif" font-size="14" fill="#FF007F" opacity="0.9" letter-spacing="2">
-   
-  </text>
-
-  <!-- Рамка рахунку аркади (SCORE / LEVEL) -->
-  <text x="40" y="30" font-family="monospace" font-size="12" fill="#00FF66">SCORE: 09999</text>
-  <text x="600" y="30" font-family="monospace" font-size="12" fill="#FFDD00">STAGE: 01</text>
+  <!-- Інтерфейс аркади -->
+  <text x="30" y="30" font-family="monospace" font-size="12" fill="#00FF66">HI-SCORE: 99999</text>
+  <text x="580" y="30" font-family="monospace" font-size="12" fill="#FFDD00">TETRIS: READY</text>
 </svg>
