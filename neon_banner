@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" width="720" height="200">
+  <defs>
+    <!-- Визначаємо градієнт з трьома основними неоновими кольорами -->
+    <linearGradient id="neonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF00E6">
+        <animate attributeName="stop-color" values="#FF00E6;#00E0FF;#9D00FF;#FF00E6" dur="10s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="50%" stop-color="#00E0FF">
+        <animate attributeName="stop-color" values="#00E0FF;#9D00FF;#FF00E6;#00E0FF" dur="10s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#9D00FF">
+        <animate attributeName="stop-color" values="#9D00FF;#FF00E6;#00E0FF;#9D00FF" dur="10s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+
+    <!-- Визначаємо фільтр для неонового світіння -->
+    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#00E0FF" flood-opacity="0.8">
+        <animate attributeName="flood-color" values="#00E0FF;#9D00FF;#FF00E6;#00E0FF" dur="10s" repeatCount="indefinite" />
+      </feDropShadow>
+      <feDropShadow dx="0" dy="0" stdDeviation="12" flood-color="#00E0FF" flood-opacity="0.5">
+        <animate attributeName="flood-color" values="#00E0FF;#9D00FF;#FF00E6;#00E0FF" dur="10s" repeatCount="indefinite" />
+      </feDropShadow>
+    </filter>
+  </defs>
+
+  <!-- Фон із анімованим градієнтом -->
+  <rect width="100%" height="100%" fill="url(#neonGradient)" rx="15" ry="15" />
+
+  <!-- Основний текст (Твій Нікнейм) із ефектом світіння -->
+  <text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" font-family="&#39;Segoe UI&#39;, Roboto, Helvetica, Arial, sans-serif" font-size="50" font-weight="bold" fill="#FFFFFF" filter="url(#neonGlow)">
+    LOGENDIP
+  </text>
+
+  <!-- Підзаголовок (Твоя Роль) -->
+  <text x="50%" y="70%" dominant-baseline="middle" text-anchor="middle" font-family="&#39;Segoe UI&#39;, Roboto, Helvetica, Arial, sans-serif" font-size="20" font-weight="normal" fill="#FFFFFF" opacity="0.9">
+    Web &amp; Desktop Develope
+  </text>
+</svg>
