@@ -34,6 +34,6 @@
 
   <!-- Підзаголовок (Твоя Роль) -->
   <text x="50%" y="70%" dominant-baseline="middle" text-anchor="middle" font-family="&#39;Segoe UI&#39;, Roboto, Helvetica, Arial, sans-serif" font-size="20" font-weight="normal" fill="#FFFFFF" opacity="0.9">
-    Web & Desktop Developer
+    Web &amp; Desktop Develope
   </text>
 </svg>
