@@ -150,7 +150,7 @@
 
   <!-- Підзаголовок знизу -->
   <text x="50%" y="168%" dominant-baseline="middle" text-anchor="middle" font-family="&#39;Press Start 2P&#39;, &#39;Courier New&#39;, monospace, sans-serif" font-size="12" fill="#00E0FF" opacity="0.8" letter-spacing="1">
-    WEB & DESKTOP DEVELOPER
+    WEB &amp; DESKTOP DEVELOPER
   </text>
 
   <!-- Інтерфейс аркади -->
