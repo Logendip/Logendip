@@ -1,39 +1,115 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" width="720" height="200">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 220" width="720" height="220">
   <defs>
-    <!-- Визначаємо градієнт з трьома основними неоновими кольорами -->
-    <linearGradient id="neonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FF00E6">
-        <animate attributeName="stop-color" values="#FF00E6;#00E0FF;#9D00FF;#FF00E6" dur="10s" repeatCount="indefinite" />
-      </stop>
-      <stop offset="50%" stop-color="#00E0FF">
-        <animate attributeName="stop-color" values="#00E0FF;#9D00FF;#FF00E6;#00E0FF" dur="10s" repeatCount="indefinite" />
-      </stop>
-      <stop offset="100%" stop-color="#9D00FF">
-        <animate attributeName="stop-color" values="#9D00FF;#FF00E6;#00E0FF;#9D00FF" dur="10s" repeatCount="indefinite" />
-      </stop>
-    </linearGradient>
-
-    <!-- Визначаємо фільтр для неонового світіння -->
+    <!-- Неонове світіння для блоків та тексту -->
     <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#00E0FF" flood-opacity="0.8">
-        <animate attributeName="flood-color" values="#00E0FF;#9D00FF;#FF00E6;#00E0FF" dur="10s" repeatCount="indefinite" />
-      </feDropShadow>
-      <feDropShadow dx="0" dy="0" stdDeviation="12" flood-color="#00E0FF" flood-opacity="0.5">
-        <animate attributeName="flood-color" values="#00E0FF;#9D00FF;#FF00E6;#00E0FF" dur="10s" repeatCount="indefinite" />
-      </feDropShadow>
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#00E0FF" flood-opacity="0.9" />
+      <feDropShadow dx="0" dy="0" stdDeviation="10" flood-color="#FF00E6" flood-opacity="0.6" />
     </filter>
+
+    <!-- Стиль сітки Тетрису -->
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#1F1F3A" stroke-width="1" />
+    </pattern>
+
+    <style>
+      /* Анімація падіння блоків */
+      @keyframes fall1 {
+        0% { transform: translateY(-60px); opacity: 0; }
+        20% { opacity: 1; }
+        80% { transform: translateY(120px); opacity: 1; }
+        100% { transform: translateY(120px); opacity: 1; }
+      }
+      @keyframes fall2 {
+        0% { transform: translateY(-80px) rotate(0deg); opacity: 0; }
+        30% { opacity: 1; }
+        85% { transform: translateY(100px) rotate(90deg); opacity: 1; }
+        100% { transform: translateY(100px) rotate(90deg); opacity: 1; }
+      }
+      @keyframes fall3 {
+        0% { transform: translateY(-100px); opacity: 0; }
+        40% { opacity: 1; }
+        90% { transform: translateY(80px); opacity: 1; }
+        100% { transform: translateY(80px); opacity: 1; }
+      }
+      @keyframes lineFlash {
+        0%, 80% { opacity: 0.3; }
+        90% { opacity: 1; filter: drop-shadow(0 0 8px #00E0FF); }
+        100% { opacity: 0.3; }
+      }
+
+      .piece1 { animation: fall1 4s ease-in-out infinite; }
+      .piece2 { animation: fall2 5s ease-in-out 1s infinite; }
+      .piece3 { animation: fall3 4.5s ease-in-out 0.5s infinite; }
+      .filled-line { animation: lineFlash 2s infinite alternate; }
+    </style>
   </defs>
 
-  <!-- Фон із анімованим градієнтом -->
-  <rect width="100%" height="100%" fill="url(#neonGradient)" rx="15" ry="15" />
+  <!-- Темний неоновий фон -->
+  <rect width="100%" height="100%" fill="#0A0A16" rx="12" ry="12" stroke="#1F1F3A" stroke-width="2" />
+  
+  <!-- Сітка Тетрису -->
+  <rect width="100%" height="100%" fill="url(#grid)" rx="12" ry="12" opacity="0.4" />
 
-  <!-- Основний текст (Твій Нікнейм) із ефектом світіння -->
-  <text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" font-family="&#39;Segoe UI&#39;, Roboto, Helvetica, Arial, sans-serif" font-size="50" font-weight="bold" fill="#FFFFFF" filter="url(#neonGlow)">
+  <!-- НИЖНІ НАБРАНІ ЛІНІЇ (Стакан тетрису) -->
+  <g fill-opacity="0.85" stroke="#0A0A16" stroke-width="1.5">
+    <!-- Заповнений нижній рядок -->
+    <rect x="40" y="180" width="18" height="18" fill="#FF007F" rx="3" />
+    <rect x="60" y="180" width="18" height="18" fill="#FF007F" rx="3" />
+    <rect x="80" y="180" width="18" height="18" fill="#00E0FF" rx="3" />
+    <rect x="100" y="180" width="18" height="18" fill="#00E0FF" rx="3" />
+    <rect x="120" y="180" width="18" height="18" fill="#9D00FF" rx="3" />
+    <rect x="140" y="180" width="18" height="18" fill="#9D00FF" rx="3" />
+    
+    <rect x="560" y="180" width="18" height="18" fill="#00FF66" rx="3" />
+    <rect x="580" y="180" width="18" height="18" fill="#00FF66" rx="3" />
+    <rect x="600" y="180" width="18" height="18" fill="#FFDD00" rx="3" />
+    <rect x="620" y="180" width="18" height="18" fill="#FFDD00" rx="3" />
+    <rect x="640" y="180" width="18" height="18" fill="#FF007F" rx="3" />
+
+    <!-- Другий рядок -->
+    <rect x="40" y="160" width="18" height="18" fill="#00E0FF" rx="3" />
+    <rect x="60" y="160" width="18" height="18" fill="#9D00FF" rx="3" />
+    <rect x="620" y="160" width="18" height="18" fill="#00FF66" rx="3" />
+    <rect x="640" y="160" width="18" height="18" fill="#FF007F" rx="3" />
+  </g>
+
+  <!-- ПАДАЮЧІ ФІГУРИ (АНІМОВАНІ) -->
+  <!-- 1. Т-подібна фігура (Рожева) -->
+  <g class="piece1" fill="#FF007F" stroke="#0A0A16" stroke-width="1.5">
+    <rect x="180" y="20" width="18" height="18" rx="3" />
+    <rect x="200" y="20" width="18" height="18" rx="3" />
+    <rect x="220" y="20" width="18" height="18" rx="3" />
+    <rect x="200" y="40" width="18" height="18" rx="3" />
+  </g>
+
+  <!-- 2. Г-подібна фігура (Блакитна) -->
+  <g class="piece2" fill="#00E0FF" stroke="#0A0A16" stroke-width="1.5">
+    <rect x="500" y="10" width="18" height="18" rx="3" />
+    <rect x="500" y="30" width="18" height="18" rx="3" />
+    <rect x="500" y="50" width="18" height="18" rx="3" />
+    <rect x="520" y="50" width="18" height="18" rx="3" />
+  </g>
+
+  <!-- 3. Квадрат O-фігура (Жовта) -->
+  <g class="piece3" fill="#FFDD00" stroke="#0A0A16" stroke-width="1.5">
+    <rect x="340" y="0" width="18" height="18" rx="3" />
+    <rect x="360" y="0" width="18" height="18" rx="3" />
+    <rect x="340" y="20" width="18" height="18" rx="3" />
+    <rect x="360" y="20" width="18" height="18" rx="3" />
+  </g>
+
+  <!-- ГОЛОВНИЙ ТЕКСТ У ЦЕНТРІ (Аркадний стиль) -->
+  <!-- Текст LOGENDIP -->
+  <text x="50%" y="42%" dominant-baseline="middle" text-anchor="middle" font-family="&#39;Press Start 2P&#39;, &#39;Courier New&#39;, monospace, sans-serif" font-size="38" font-weight="900" fill="#00E0FF" filter="url(#neonGlow)" letter-spacing="4">
     LOGENDIP
   </text>
 
-  <!-- Підзаголовок (Твоя Роль) -->
-  <text x="50%" y="70%" dominant-baseline="middle" text-anchor="middle" font-family="&#39;Segoe UI&#39;, Roboto, Helvetica, Arial, sans-serif" font-size="20" font-weight="normal" fill="#FFFFFF" opacity="0.9">
-    Web &amp; Desktop Develope
+  <!-- Підзаголовок -->
+  <text x="50%" y="68%" dominant-baseline="middle" text-anchor="middle" font-family="&#39;Press Start 2P&#39;, &#39;Courier New&#39;, monospace, sans-serif" font-size="14" fill="#FF007F" opacity="0.9" letter-spacing="2">
+    WEB & DESKTOP DEVELOPER
   </text>
+
+  <!-- Рамка рахунку аркади (SCORE / LEVEL) -->
+  <text x="40" y="30" font-family="monospace" font-size="12" fill="#00FF66">SCORE: 09999</text>
+  <text x="600" y="30" font-family="monospace" font-size="12" fill="#FFDD00">STAGE: 01</text>
 </svg>
